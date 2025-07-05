@@ -30,4 +30,9 @@ public:
     void Update();
 
     void Draw() const;
+
+    ~Grid()
+    {
+        renderLayer = nullptr;
+    };
 };
