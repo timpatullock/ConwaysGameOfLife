@@ -1,27 +1,39 @@
 #include <raylib.h>
 #include "grid.h"
+#include "Rendering/RaylibRenderer.h"
+// #include "Rendering/TerminalRenderer.h"
 
 int main()
 {
-    const Color darkGreen = {20, 160, 133, 255};
 
-    constexpr int screenWidth = 1024;
-    constexpr int screenHeight = 768;
+    constexpr int screenWidth = 1900;
+    constexpr int screenHeight = 1000;
+    constexpr int cellSize = 10;
+    constexpr int gridWidth = screenWidth / cellSize;
+    constexpr int gridHeight = screenHeight / cellSize;
 
-    InitWindow(screenWidth, screenHeight, "Conway's Game of Life");
-    SetTargetFPS(60);
-    // Create a grid with cells of size 10x10
-    Grid *grid = new Grid(1024 / 10, 768 / 10);
-    while (!WindowShouldClose())
+    Renderer *renderer = new RaylibRenderer(cellSize, gridWidth, gridHeight);
+    // Renderer *renderer = new TerminalRenderer(cellSize, gridWidth, gridHeight);
+    renderer->Setup(screenWidth, screenHeight, "Conway's Game of Life");
+
+    // Theoretically we could setup the grid to not be aware of the renderer, but for this example it felt fine to pass it a polymorphic renderer.
+    Grid *grid = new Grid(gridWidth, gridHeight, renderer);
+
+    while (renderer->ShouldEndSimulation() == false)
     {
-
+        renderer->Update();
         // Update the game
         grid->Update();
-        BeginDrawing();
-        ClearBackground(darkGreen);
+
         grid->Draw();
-        EndDrawing();
+        renderer->EndUpdate();
     }
 
-    CloseWindow();
+    delete grid;
+    grid = nullptr;
+
+    renderer->Shutdown();
+
+    delete renderer;
+    renderer = nullptr;
 }
