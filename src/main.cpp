@@ -1,4 +1,3 @@
-#include <raylib.h>
 #include "grid.h"
 #include "Rendering/RaylibRenderer.h"
 // #include "Rendering/TerminalRenderer.h"
