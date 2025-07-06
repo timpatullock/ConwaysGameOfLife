@@ -2,7 +2,7 @@
 
 #include "grid.h"
 #include "Rendering/Renderer.h"
-Grid::Grid(int cols, int rws, Renderer *renderLayer) : columns(cols), rows(rws), grid(rows, std::vector<bool>(columns, false)), renderLayer(std::unique_ptr<Renderer>(renderLayer))
+Grid::Grid(int cols, int rws, Renderer *renderLayer) : columns(cols), rows(rws), grid(rows, std::vector<bool>(columns, false)), renderLayer(renderLayer)
 {
     // Initialize the grid with randomized cells
     std::srand(static_cast<unsigned int>(std::time(nullptr))); // Seed for random number generation
