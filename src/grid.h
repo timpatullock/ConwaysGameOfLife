@@ -11,7 +11,7 @@ private:
     int columns = 0;
     int rows = 0;
 
-    // Could theoretically use a 1D vector or array, but for clarity and ease of access, a 2D vector is used.
+    // Could theoretically use a 1D vector or array, but for clarity and ease of use, a 2D vector is used.
     std::vector<std::vector<bool>> grid;
 
     Renderer *renderLayer;

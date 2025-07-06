@@ -10,7 +10,7 @@ Grid::Grid(int cols, int rws, Renderer *renderLayer) : columns(cols), rows(rws),
     {
         for (int x = 0; x < columns; ++x)
         {
-            grid[y][x] = rand() % 100 > 90; // Randomly initialize cells as alive or dead
+            grid[y][x] = rand() % 100 < 10; // ~10% chance of being alive
         }
     }
 }
@@ -19,7 +19,7 @@ bool Grid::IsCellAlive(int x, int y) const
 {
     if (x < 0 || x >= columns || y < 0 || y >= rows)
     {
-        return false; // Out of bounds
+        return false;
     }
     return grid[y][x];
 }
@@ -29,7 +29,7 @@ bool Grid::SetCellAlive(int x, int y, bool alive)
     if (x < 0 || x >= columns || y < 0 || y >= rows)
     {
 
-        return false; // Out of bounds
+        return false;
     }
     grid[y][x] = alive;
     return true;
@@ -50,7 +50,7 @@ void Grid::Update()
                 for (int dx = -1; dx <= 1; ++dx)
                 {
                     if (dx == 0 && dy == 0)
-                        continue; // Skip the cell itself
+                        continue;
                     if (IsCellAlive(x + dx, y + dy))
                     {
                         aliveNeighbors++;
@@ -64,7 +64,7 @@ void Grid::Update()
                 // If cell has more than three neighbors, it dies
                 if (aliveNeighbors < 2 || aliveNeighbors > 3)
                 {
-                    SetCellAlive(x, y, false); // Cell dies
+                    SetCellAlive(x, y, false);
                 }
                 // If cell has two or three neighbors, it lives
             }
@@ -73,7 +73,7 @@ void Grid::Update()
                 // If cell is dead and has 3 living neighbors, it becomes alive
                 if (aliveNeighbors == 3)
                 {
-                    SetCellAlive(x, y, true); // Cell becomes alive
+                    SetCellAlive(x, y, true);
                 }
             }
         }
