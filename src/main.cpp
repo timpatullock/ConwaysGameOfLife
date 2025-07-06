@@ -4,8 +4,8 @@
 
 int main()
 {
-    int rows = 10;
-    int cols = 10;
+    int rows = 90;
+    int cols = 90;
     constexpr int cellSize = 10;
 
     Renderer *renderer = new RaylibRenderer(cellSize, cols, rows);

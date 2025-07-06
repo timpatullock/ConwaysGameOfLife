@@ -13,8 +13,6 @@ public:
     RaylibRenderer(int cellSize, int gridWidth, int gridHeight) : Renderer(cellSize, gridWidth, gridHeight)
     {
         this->cellSize = cellSize;
-        this->gridWidth = gridWidth;
-        this->gridHeight = gridHeight;
     }
 
     void RenderCell(int row, int col, bool alive) override

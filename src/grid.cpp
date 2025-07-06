@@ -10,7 +10,7 @@ Grid::Grid(int cols, int rws, Renderer *renderLayer) : columns(cols), rows(rws),
     {
         for (int x = 0; x < columns; ++x)
         {
-            grid[y][x] = bool(rand() % 2); // Randomly initialize cells as alive or dead
+            grid[y][x] = rand() % 100 > 90; // Randomly initialize cells as alive or dead
         }
     }
 }
