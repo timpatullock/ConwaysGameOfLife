@@ -19,9 +19,7 @@ int main()
     while (renderer->ShouldEndSimulation() == false)
     {
         renderer->Update();
-        // Update the game
         grid->Update();
-
         grid->Draw();
         renderer->EndUpdate();
     }
