@@ -1,5 +1,4 @@
 
-#include <raylib.h>
 #include "Renderer.h"
 #include <iostream>
 
@@ -27,7 +26,7 @@ public:
         }
     };
 
-    void Setup(int screenWidth, int screenHeight, std::string title) override
+    void Setup(std::string title) override
     {
         std::cout << "Terminal Renderer initialized with title: " << title << std::endl;
     }

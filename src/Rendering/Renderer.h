@@ -16,7 +16,7 @@ public:
         this->gridHeight = gridHeight;
     };
 
-    virtual void Setup(int screenWidth, int screenHeight, std::string title) {}
+    virtual void Setup(std::string title) {}
 
     virtual void Shutdown()
     {

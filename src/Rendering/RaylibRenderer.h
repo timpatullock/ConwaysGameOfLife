@@ -13,18 +13,20 @@ public:
     RaylibRenderer(int cellSize, int gridWidth, int gridHeight) : Renderer(cellSize, gridWidth, gridHeight)
     {
         this->cellSize = cellSize;
+        this->gridWidth = gridWidth;
+        this->gridHeight = gridHeight;
     }
 
-    void RenderCell(int x, int y, bool alive) override
+    void RenderCell(int row, int col, bool alive) override
     {
         // Implementation using Raylib functions
-        DrawRectangle(x * cellSize, y * cellSize, cellSize, cellSize, alive ? GREEN : DARKGRAY);
+        DrawRectangle(col * cellSize, row * cellSize, cellSize, cellSize, alive ? GREEN : DARKGRAY);
     }
 
-    void Setup(int screenWidth, int screenHeight, std::string title) override
+    void Setup(std::string title) override
     {
-        InitWindow(screenWidth, screenHeight, title.c_str());
-        SetTargetFPS(60);
+        InitWindow(gridWidth * cellSize, gridHeight * cellSize, title.c_str());
+        SetTargetFPS(5);
     }
 
     bool ShouldEndSimulation() override
