@@ -1,5 +1,7 @@
 # Conway's Game of Life C++ Raylib Implementation
 
+[Github](https://github.com/timpatullock/ConwaysGameOfLife)
+
 Simple Conway's Game of Life implementation using c++ to utilize some simple algorithms and class usage for a code sample.
 Utilizing Raylib to simulate a simple visual rendering pipeline. Though this can be swapped out for a refreshing terminal window via TerminalRenderer.
 Project simulates simple bootstrapping, game loop, and teardown.
