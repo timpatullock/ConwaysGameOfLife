@@ -2,6 +2,7 @@
 #include <iostream>
 #include <raylib.h>
 #include <random>
+#include <memory>
 #include <ctime>
 
 class Renderer;
@@ -14,10 +15,10 @@ private:
     // Could theoretically use a 1D vector or array, but for clarity and ease of use, a 2D vector is used.
     std::vector<std::vector<bool>> grid;
 
-    Renderer *renderLayer;
+    std::shared_ptr<Renderer> renderLayer;
 
 public:
-    Grid(int cols, int rws, Renderer *renderLayer);
+    Grid(int cols, int rws, std::shared_ptr<Renderer> renderLayer);
 
 protected:
     bool IsCellAlive(int x, int y) const;
